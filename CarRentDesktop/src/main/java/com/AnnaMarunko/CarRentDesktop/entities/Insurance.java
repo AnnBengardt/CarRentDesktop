@@ -1,5 +1,6 @@
 package com.AnnaMarunko.CarRentDesktop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -22,5 +23,6 @@ public class Insurance {
 
     @OneToOne
     @JoinColumn
+    @JsonIgnore
     private Car car;
 }

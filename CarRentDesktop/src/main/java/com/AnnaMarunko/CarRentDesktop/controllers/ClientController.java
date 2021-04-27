@@ -48,9 +48,9 @@ public class ClientController {
         return clientService.find(id).map(client -> {
             client.setFirstName(clientUpdate.getLastName());
             client.setLastName(clientUpdate.getLastName());
-            client.setCardNumber(clientUpdate.getCardNumber());
             client.setDriverLicense(clientUpdate.getDriverLicense());
             client.setPassport(clientUpdate.getPassport());
+            client.setPhone(clientUpdate.getPhone());
             client.setIsBlackListed(clientUpdate.getIsBlackListed());
             clientService.update(client);
             return new ResponseEntity<>(client, HttpStatus.OK);

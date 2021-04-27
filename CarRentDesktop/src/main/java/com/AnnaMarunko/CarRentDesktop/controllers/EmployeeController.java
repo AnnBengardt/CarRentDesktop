@@ -59,7 +59,6 @@ public class EmployeeController {
             employee.setOffice(employeeUpdate.getOffice());
             employee.setEmail(employeeUpdate.getEmail());
             employee.setHashedPassword(employeeUpdate.getHashedPassword());
-            employee.setIsMainManager(employeeUpdate.getIsMainManager());
             employee.setJob(employeeUpdate.getJob());
             employeeService.update(employee);
             return new ResponseEntity<>(employee, HttpStatus.OK);

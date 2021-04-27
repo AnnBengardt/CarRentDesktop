@@ -1,5 +1,6 @@
 package com.AnnaMarunko.CarRentDesktop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,20 +27,19 @@ public class Car {
     @OneToOne(mappedBy = "car")
     private Insurance insurance;
 
-    /*@OneToMany(
+    @OneToMany(
             mappedBy = "car",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonIgnore
     private List<Rent> rentList = new ArrayList<>();
-
     public void addRent(Rent rent){
         rent.setCar(this);
         this.rentList.add(rent);
     }
-
     public void removeRent(Rent rent){
         this.rentList.remove(rent);
-    }*/
+    }
 
 }

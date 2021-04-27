@@ -49,8 +49,7 @@ public class OfficeController {
             office.setCity(officeUpdate.getCity());
             office.setStreet(officeUpdate.getStreet());
             office.setEmail(officeUpdate.getEmail());
-            office.setCarList(officeUpdate.getCarList());
-            office.setEmployeeList(office.getEmployeeList());
+            office.setHouse(officeUpdate.getHouse());
             officeService.update(office);
             return new ResponseEntity<>(office, HttpStatus.OK);
         }).orElseThrow(() -> new IllegalArgumentException());
