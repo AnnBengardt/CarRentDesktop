@@ -46,7 +46,7 @@ public class ClientController {
     @PutMapping("/api/clients/{id}")
     public ResponseEntity<?> updateClient(@PathVariable(name = "id") Long id, @RequestBody Client clientUpdate) {
         return clientService.find(id).map(client -> {
-            client.setFirstName(clientUpdate.getLastName());
+            client.setFirstName(clientUpdate.getFirstName());
             client.setLastName(clientUpdate.getLastName());
             client.setDriverLicense(clientUpdate.getDriverLicense());
             client.setPassport(clientUpdate.getPassport());

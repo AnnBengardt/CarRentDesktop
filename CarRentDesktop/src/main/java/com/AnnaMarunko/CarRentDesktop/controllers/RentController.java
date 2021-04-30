@@ -50,6 +50,14 @@ public class RentController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/api/rents/findbyoffice/{id}")
+    public ResponseEntity<List<Rent>> findByOfficeId(@PathVariable(name = "id") Long id){
+        final List<Rent> rent = rentService.findByOfficeId(id);
+        return rent != null
+                ? new ResponseEntity<>(rent, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
     @PutMapping("/api/rents/{id}")
     public ResponseEntity<?> updateRent(@PathVariable(name = "id") Long id, @RequestBody Rent rentUpdate) {

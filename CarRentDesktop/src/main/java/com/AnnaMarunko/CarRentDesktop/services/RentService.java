@@ -34,4 +34,5 @@ public class RentService {
         return rentRepo.findByClient_ClientId(id);
     }
 
+    public List<Rent> findByOfficeId(Long id) {return rentRepo.findByCar_Office_OfficeId(id);}
 }

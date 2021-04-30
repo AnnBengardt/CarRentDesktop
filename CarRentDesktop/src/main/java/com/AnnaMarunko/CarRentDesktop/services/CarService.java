@@ -3,6 +3,7 @@ package com.AnnaMarunko.CarRentDesktop.services;
 import com.AnnaMarunko.CarRentDesktop.entities.Car;
 import com.AnnaMarunko.CarRentDesktop.repos.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +30,7 @@ public class CarService {
     public Optional<Car> find(Long id){
         return carRepo.findById(id);
     }
+
+    public List<Car> findByOfficeId(Long id) {return carRepo.findByOffice_OfficeId(id);}
 
 }

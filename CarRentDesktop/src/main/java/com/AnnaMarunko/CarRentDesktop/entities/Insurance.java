@@ -23,6 +23,5 @@ public class Insurance {
 
     @OneToOne
     @JoinColumn
-    @JsonIgnore
     private Car car;
 }

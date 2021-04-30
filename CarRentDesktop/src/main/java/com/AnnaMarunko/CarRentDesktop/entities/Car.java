@@ -24,7 +24,9 @@ public class Car {
     @ManyToOne(fetch = FetchType.LAZY)
     private Office office;
 
-    @OneToOne(mappedBy = "car")
+    @OneToOne(mappedBy = "car",
+            cascade = CascadeType.ALL)
+    @JsonIgnore
     private Insurance insurance;
 
     @OneToMany(
