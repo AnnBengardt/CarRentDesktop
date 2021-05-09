@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * The type Employee.
+ */
 @Entity
 @Data
 @NoArgsConstructor

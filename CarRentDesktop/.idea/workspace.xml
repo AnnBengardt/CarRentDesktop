@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -60,8 +63,23 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.3908046" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CarRentDesktopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="CarRentDesktop" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.AnnaMarunko.CarRentDesktop.CarRentDesktopApplication" />
@@ -84,6 +102,12 @@
       <workItem from="1619596769564" duration="9139000" />
       <workItem from="1619698304233" duration="1023000" />
       <workItem from="1619778195565" duration="7807000" />
+      <workItem from="1619864623964" duration="2592000" />
+      <workItem from="1619960312348" duration="1106000" />
+      <workItem from="1620044104864" duration="4281000" />
+      <workItem from="1620116464745" duration="6097000" />
+      <workItem from="1620141611986" duration="2912000" />
+      <workItem from="1620552737334" duration="2619000" />
     </task>
     <servers />
   </component>
@@ -107,42 +131,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1619461613369" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1619596789403">
+    <state x="763" y="176" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1620555250498">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619596789403" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1619824857495">
+    <state x="763" y="176" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1620555250498" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1620554143040">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1619824857495">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1620554143040" />
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1620555504578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1619824857495">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620555504578" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1620555504578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1619824857495">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620555504578" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1620555504578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1619824857496">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620555504578" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1620555504578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619824857496" />
-    <state width="1493" height="218" key="GridCell.Tab.1.center" timestamp="1619824857495">
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620555504578" />
+    <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1620131292051">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.1.left" timestamp="1619824857495">
+    <state width="1493" height="218" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620131292051" />
+    <state width="1493" height="218" key="GridCell.Tab.1.center" timestamp="1620131292051">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
-    <state width="1493" height="218" key="GridCell.Tab.1.right" timestamp="1619824857495">
+    <state width="1493" height="218" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620131292051" />
+    <state width="1493" height="218" key="GridCell.Tab.1.left" timestamp="1620131292051">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1619824857495" />
+    <state width="1493" height="218" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620131292051" />
+    <state width="1493" height="218" key="GridCell.Tab.1.right" timestamp="1620131292051">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620131292051" />
     <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1619518719165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -159,22 +187,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1619518719165" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1620554069435">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1620554069435" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/AnnaMarunko/CarRentDesktop/services/OfficeService.java</url>
-          <line>20</line>
+          <line>32</line>
           <properties class="com.AnnaMarunko.CarRentDesktop.services.OfficeService" method="update">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/AnnaMarunko/CarRentDesktop/controllers/EmployeeController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Client.
+ */
 @Entity
 @Data
 @NoArgsConstructor
@@ -34,10 +37,21 @@ public class Client {
     @JsonIgnore
     private List<Rent> rentList = new ArrayList<>();
 
+    /**
+     * Add rent.
+     *
+     * @param rent the rent
+     */
     public void addRent(Rent rent){
         rent.setClient(this);
         this.rentList.add(rent);
     }
+
+    /**
+     * Remove rent.
+     *
+     * @param rent the rent
+     */
     public void removeRent(Rent rent){
         this.rentList.remove(rent);
     }

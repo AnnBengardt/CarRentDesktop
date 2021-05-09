@@ -1,13 +1,14 @@
 package com.AnnaMarunko.CarRentDesktop.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * The type Insurance.
+ */
 @Entity
 @Data
 @NoArgsConstructor

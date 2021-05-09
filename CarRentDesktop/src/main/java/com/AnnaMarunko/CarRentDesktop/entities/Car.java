@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Car.
+ */
 @Entity
 @Data
 @NoArgsConstructor
@@ -24,8 +27,7 @@ public class Car {
     @ManyToOne(fetch = FetchType.LAZY)
     private Office office;
 
-    @OneToOne(mappedBy = "car",
-            cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "car")
     @JsonIgnore
     private Insurance insurance;
 
@@ -36,10 +38,22 @@ public class Car {
     )
     @JsonIgnore
     private List<Rent> rentList = new ArrayList<>();
+
+    /**
+     * Add rent.
+     *
+     * @param rent the rent
+     */
     public void addRent(Rent rent){
         rent.setCar(this);
         this.rentList.add(rent);
     }
+
+    /**
+     * Remove rent.
+     *
+     * @param rent the rent
+     */
     public void removeRent(Rent rent){
         this.rentList.remove(rent);
     }

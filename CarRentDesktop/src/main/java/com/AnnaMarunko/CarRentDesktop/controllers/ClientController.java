@@ -10,22 +10,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Client controller.
+ */
 @RestController
 public class ClientController {
 
     private final ClientService clientService;
 
+    /**
+     * Instantiates a new Client controller.
+     *
+     * @param clientService the client service
+     */
     @Autowired
     public ClientController(ClientService clientService){
         this.clientService = clientService;
     }
 
+    /**
+     * Create response entity.
+     *
+     * @param client the client
+     * @return the response entity
+     */
     @PostMapping("/api/clients")
     public ResponseEntity<?> create(@RequestBody Client client){
         clientService.create(client);
         return  new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * Find all response entity.
+     *
+     * @return the response entity
+     */
     @GetMapping("/api/clients")
     public ResponseEntity<List<Client>> findAll(){
         final List<Client> clientList = clientService.findAll();
@@ -34,6 +53,12 @@ public class ClientController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Find response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @GetMapping("/api/clients/{id}")
     public ResponseEntity<Optional<Client>> find(@PathVariable(name = "id") Long id){
         final Optional<Client> client = clientService.find(id);
@@ -43,6 +68,13 @@ public class ClientController {
     }
 
 
+    /**
+     * Update client response entity.
+     *
+     * @param id           the id
+     * @param clientUpdate the client update
+     * @return the response entity
+     */
     @PutMapping("/api/clients/{id}")
     public ResponseEntity<?> updateClient(@PathVariable(name = "id") Long id, @RequestBody Client clientUpdate) {
         return clientService.find(id).map(client -> {
@@ -58,6 +90,12 @@ public class ClientController {
 
     }
 
+    /**
+     * Delete client response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping("/api/clients/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable(name = "id") Long id) {
         return clientService.find(id).map(client -> {

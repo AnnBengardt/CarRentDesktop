@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.AnnaMarunko.CarRentDesktop"},{"l":"com.AnnaMarunko.CarRentDesktop.controllers"},{"l":"com.AnnaMarunko.CarRentDesktop.entities"},{"l":"com.AnnaMarunko.CarRentDesktop.repos"},{"l":"com.AnnaMarunko.CarRentDesktop.services"}];updateSearchResults();
