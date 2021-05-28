@@ -65,12 +65,12 @@ class RentServiceTest {
         rent.setClient(client);
 
         rent1.setRentId(Long.valueOf(2));
-        rent.setStartDate(null);
-        rent.setEndDate(null);
-        rent.setRate(null);
-        rent.setFinalPrice(5000.00);
-        rent.setCar(car1);
-        rent.setClient(client);
+        rent1.setStartDate(null);
+        rent1.setEndDate(null);
+        rent1.setRate(null);
+        rent1.setFinalPrice(5000.00);
+        rent1.setCar(car1);
+        rent1.setClient(client);
 
     }
 
