@@ -22,8 +22,8 @@ public class RentService {
      *
      * @param rent the rent
      */
-    public void create(Rent rent){
-        rentRepo.save(rent);
+    public Rent create(Rent rent){
+        return rentRepo.save(rent);
     }
 
     /**
@@ -31,14 +31,15 @@ public class RentService {
      *
      * @param rent the rent
      */
-    public void update(Rent rent) { rentRepo.save(rent); }
+    public Rent update(Rent rent) { return rentRepo.save(rent); }
 
     /**
      * Delete.
      *
      * @param rent the rent
      */
-    public void delete(Rent rent) { rentRepo.delete(rent); }
+    public Boolean delete(Rent rent) { rentRepo.delete(rent);
+    return true;}
 
     /**
      * Find all list.
@@ -65,7 +66,7 @@ public class RentService {
      * @param id the id
      * @return the optional
      */
-    public Optional<Rent> findByClientId(Long id){
+    public List<Rent> findByClientId(Long id){
         return rentRepo.findByClient_ClientId(id);
     }
 

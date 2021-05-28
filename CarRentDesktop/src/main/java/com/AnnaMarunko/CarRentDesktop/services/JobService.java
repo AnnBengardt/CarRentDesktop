@@ -22,8 +22,8 @@ public class JobService {
      *
      * @param job the job
      */
-    public void create(Job job){
-        jobRepo.save(job);
+    public Job create(Job job){
+        return jobRepo.save(job);
     }
 
     /**
@@ -31,14 +31,15 @@ public class JobService {
      *
      * @param job the job
      */
-    public void update(Job job) { jobRepo.save(job); }
+    public Job update(Job job) { return jobRepo.save(job); }
 
     /**
      * Delete.
      *
      * @param job the job
      */
-    public void delete(Job job) { jobRepo.delete(job); }
+    public Boolean delete(Job job) { jobRepo.delete(job);
+    return true;}
 
     /**
      * Find all list.

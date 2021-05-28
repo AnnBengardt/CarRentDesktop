@@ -22,8 +22,8 @@ public class EmployeeService {
      *
      * @param employee the employee
      */
-    public void create(Employee employee){
-        employeeRepo.save(employee);
+    public Employee create(Employee employee){
+        return employeeRepo.save(employee);
     }
 
     /**
@@ -31,14 +31,15 @@ public class EmployeeService {
      *
      * @param employee the employee
      */
-    public void update(Employee employee) { employeeRepo.save(employee); }
+    public Employee update(Employee employee) { return employeeRepo.save(employee); }
 
     /**
      * Delete.
      *
      * @param employee the employee
      */
-    public void delete(Employee employee) { employeeRepo.delete(employee); }
+    public Boolean delete(Employee employee) {  employeeRepo.delete(employee);
+    return true;}
 
     /**
      * Find all list.

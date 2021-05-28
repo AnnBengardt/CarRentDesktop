@@ -18,7 +18,7 @@ public interface RentRepo extends JpaRepository<Rent, Long> {
      * @param clientId the client id
      * @return the optional
      */
-    public Optional<Rent> findByClient_ClientId(Long clientId);
+    public List<Rent> findByClient_ClientId(Long clientId);
 
     /**
      * Find by car office id list.

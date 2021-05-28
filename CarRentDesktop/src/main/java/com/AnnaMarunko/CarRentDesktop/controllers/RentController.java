@@ -74,8 +74,8 @@ public class RentController {
      * @return the response entity
      */
     @GetMapping("/api/rents/findbyclient/{id}")
-    public ResponseEntity<Optional<Rent>> findByClientId(@PathVariable(name = "id") Long id){
-        final Optional<Rent> rent = rentService.findByClientId(id);
+    public ResponseEntity<List<Rent>> findByClientId(@PathVariable(name = "id") Long id){
+        final List<Rent> rent = rentService.findByClientId(id);
         return rent != null
                 ? new ResponseEntity<>(rent, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

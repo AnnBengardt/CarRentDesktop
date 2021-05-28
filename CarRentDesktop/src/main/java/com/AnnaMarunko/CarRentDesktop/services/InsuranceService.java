@@ -22,8 +22,8 @@ public class InsuranceService {
      *
      * @param insurance the insurance
      */
-    public void create(Insurance insurance){
-        insuranceRepo.save(insurance);
+    public Insurance create(Insurance insurance){
+        return insuranceRepo.save(insurance);
     }
 
     /**
@@ -31,14 +31,15 @@ public class InsuranceService {
      *
      * @param insurance the insurance
      */
-    public void update(Insurance insurance) { insuranceRepo.save(insurance); }
+    public Insurance update(Insurance insurance) {return insuranceRepo.save(insurance); }
 
     /**
      * Delete.
      *
      * @param insurance the insurance
      */
-    public void delete(Insurance insurance) { insuranceRepo.delete(insurance); }
+    public Boolean delete(Insurance insurance) { insuranceRepo.delete(insurance);
+    return true;}
 
     /**
      * Find all list.

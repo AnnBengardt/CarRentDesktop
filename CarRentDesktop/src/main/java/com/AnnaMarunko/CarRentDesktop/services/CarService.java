@@ -22,8 +22,8 @@ public class CarService {
      *
      * @param car the car
      */
-    public void create(Car car){
-        carRepo.save(car);
+    public Car create(Car car){
+        return carRepo.save(car);
     }
 
     /**
@@ -31,14 +31,15 @@ public class CarService {
      *
      * @param car the car
      */
-    public void update(Car car) { carRepo.save(car); }
+    public Car update(Car car) { return carRepo.save(car); }
 
     /**
      * Delete.
      *
      * @param car the car
      */
-    public void delete(Car car) { carRepo.delete(car); }
+    public Boolean delete(Car car) { carRepo.delete(car);
+    return true;}
 
     /**
      * Find all list.

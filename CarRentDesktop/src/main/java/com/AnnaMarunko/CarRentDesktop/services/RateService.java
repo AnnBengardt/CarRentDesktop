@@ -22,8 +22,8 @@ public class RateService {
      *
      * @param rate the rate
      */
-    public void create(Rate rate){
-        rateRepo.save(rate);
+    public Rate create(Rate rate){
+        return rateRepo.save(rate);
     }
 
     /**
@@ -31,14 +31,15 @@ public class RateService {
      *
      * @param rate the rate
      */
-    public void update(Rate rate) { rateRepo.save(rate); }
+    public Rate update(Rate rate) { return rateRepo.save(rate); }
 
     /**
      * Delete.
      *
      * @param rate the rate
      */
-    public void delete(Rate rate) { rateRepo.delete(rate); }
+    public Boolean delete(Rate rate) { rateRepo.delete(rate);
+    return true;}
 
     /**
      * Find all list.

@@ -22,8 +22,8 @@ public class OfficeService {
      *
      * @param office the office
      */
-    public void create(Office office){
-        officeRepo.save(office);
+    public Office create(Office office){
+        return officeRepo.save(office);
     }
 
     /**
@@ -31,14 +31,15 @@ public class OfficeService {
      *
      * @param office the office
      */
-    public void update(Office office) { officeRepo.save(office); }
+    public Office update(Office office) { return officeRepo.save(office); }
 
     /**
      * Delete.
      *
      * @param office the office
      */
-    public void delete(Office office) { officeRepo.delete(office); }
+    public Boolean delete(Office office) { officeRepo.delete(office);
+    return true;}
 
     /**
      * Find all list.

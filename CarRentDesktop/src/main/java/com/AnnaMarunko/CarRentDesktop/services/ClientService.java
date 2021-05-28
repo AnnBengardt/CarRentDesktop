@@ -22,8 +22,8 @@ public class ClientService {
      *
      * @param client the client
      */
-    public void create(Client client){
-        clientRepo.save(client);
+    public Client create(Client client){
+        return clientRepo.save(client);
     }
 
     /**
@@ -31,14 +31,15 @@ public class ClientService {
      *
      * @param client the client
      */
-    public void update(Client client) { clientRepo.save(client); }
+    public Client update(Client client) { return clientRepo.save(client); }
 
     /**
      * Delete.
      *
      * @param client the client
      */
-    public void delete(Client client) { clientRepo.delete(client); }
+    public Boolean delete(Client client) { clientRepo.delete(client);
+    return true;}
 
     /**
      * Find all list.
