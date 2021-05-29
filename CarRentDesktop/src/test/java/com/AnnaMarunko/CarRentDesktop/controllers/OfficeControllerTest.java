@@ -1,12 +1,12 @@
 package com.AnnaMarunko.CarRentDesktop.controllers;
 
 import com.AnnaMarunko.CarRentDesktop.entities.Office;
-import com.AnnaMarunko.CarRentDesktop.entities.Rate;
 import com.AnnaMarunko.CarRentDesktop.services.OfficeService;
-import com.AnnaMarunko.CarRentDesktop.services.RateService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,7 +20,6 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -58,30 +57,32 @@ class OfficeControllerTest {
     }
 
     @Test
+    @DisplayName("Create an office")
     void create() throws Exception {
         doReturn(office).when(officeService).create(any());
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(post("/api/offices")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(office)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all offices")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(office, office1)).when(officeService).findAll();
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/offices"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].officeId", is(1)))
                 .andExpect(jsonPath("$[0].email", is("office@office.ru")))
@@ -96,16 +97,17 @@ class OfficeControllerTest {
     }
 
     @Test
+    @DisplayName("Find an office by ID")
     void find() throws Exception {
         doReturn(Optional.of(office)).when(officeService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/offices/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.officeId", is(1)))
                 .andExpect(jsonPath("$.email", is("office@office.ru")))
                 .andExpect(jsonPath("$.city", is("Moscow")))
@@ -114,23 +116,24 @@ class OfficeControllerTest {
     }
 
     @Test
+    @DisplayName("Update an office")
     void updateOffice() throws Exception {
         Office office2 = office;
         office2.setEmail("cars@yandex.ru");
         doReturn(Optional.of(office)).when(officeService).find(Long.valueOf(1));
         doReturn(office2).when(officeService).update(office);
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(put("/api/offices/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.IF_MATCH, 2)
                 .content(asJsonString(office2)))
 
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.officeId", is(1)))
                 .andExpect(jsonPath("$.email", is("cars@yandex.ru")))
                 .andExpect(jsonPath("$.city", is("Moscow")))
@@ -139,9 +142,12 @@ class OfficeControllerTest {
     }
 
     @Test
+    @DisplayName("Delete an office")
     void deleteOffice() throws Exception {
         doReturn(Optional.of(office)).when(officeService).find(Long.valueOf(1));
         doReturn(true).when(officeService).delete(office);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/offices/{id}", 1))
                 .andExpect(status().isOk());
     }

@@ -1,23 +1,20 @@
 package com.AnnaMarunko.CarRentDesktop.services;
 
 import com.AnnaMarunko.CarRentDesktop.entities.Car;
-import com.AnnaMarunko.CarRentDesktop.entities.Employee;
 import com.AnnaMarunko.CarRentDesktop.entities.Insurance;
-import com.AnnaMarunko.CarRentDesktop.entities.Office;
 import com.AnnaMarunko.CarRentDesktop.repos.InsuranceRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -57,6 +54,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Create an insurance")
     void create() {
         doReturn(insurance1).when(insuranceRepo).save(insurance1);
 
@@ -68,12 +66,13 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Update an insurance")
     void update() {
         insurance1.setPrice(25000.00);
         doReturn(insurance1).when(insuranceRepo).save(insurance1);
 
         // Execute the service call
-        Insurance returnedValue = insuranceService.create(insurance1);
+        Insurance returnedValue = insuranceService.update(insurance1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved insurance should not be null");
@@ -81,6 +80,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Delete an insurance")
     void delete() {
         doNothing().when(insuranceRepo).delete(insurance1);
 
@@ -94,6 +94,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Find all insurances")
     void findAll() {
         doReturn(Arrays.asList(insurance, insurance1)).when(insuranceRepo).findAll();
 
@@ -105,6 +106,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Find an insurance by ID")
     void find() {
 
         doReturn(Optional.of(insurance)).when(insuranceRepo).findById(Long.valueOf(1));
@@ -119,6 +121,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Find an insurance by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(insuranceRepo).findById(Long.valueOf(5));
 
@@ -130,6 +133,7 @@ class InsuranceServiceTest {
     }
 
     @Test
+    @DisplayName("Find an insurance by Car id")
     void findByCarId() {
 
         doReturn(Optional.of(insurance)).when(insuranceRepo).findByCar_CarId(Long.valueOf(1));
@@ -140,9 +144,6 @@ class InsuranceServiceTest {
         // Assert the response
         Assertions.assertTrue(returnedValue.isPresent(), "Insurance was not found");
         Assertions.assertSame(insurance, returnedValue.get(), "The insurance returned was not the same as the mock");
-        // Assertions.assertEquals(Long.valueOf(5), returnedValue.get().getCar().getCarId(), "The insurance " +
-                //"returned doesn't have the same car id as the mock");
-
 
     }
 }

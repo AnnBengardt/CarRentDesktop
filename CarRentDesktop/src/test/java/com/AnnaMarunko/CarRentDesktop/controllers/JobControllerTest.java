@@ -5,6 +5,7 @@ import com.AnnaMarunko.CarRentDesktop.services.JobService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +19,6 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -51,30 +51,32 @@ class JobControllerTest {
     }
 
     @Test
+    @DisplayName("Create a job")
     void create() throws Exception {
         doReturn(job).when(jobService).create(any());
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(post("/api/jobs")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(job)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all jobs")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(job, job1)).when(jobService).findAll();
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/jobs"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].jobId", is(1)))
                 .andExpect(jsonPath("$[0].jobName", is("Mechanic")))
@@ -83,46 +85,51 @@ class JobControllerTest {
     }
 
     @Test
+    @DisplayName("Find a job by ID")
     void find() throws Exception {
         doReturn(Optional.of(job)).when(jobService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/jobs/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.jobId", is(1)))
                 .andExpect(jsonPath("$.jobName", is("Mechanic")));
     }
 
     @Test
+    @DisplayName("Update a job")
     void updateJob() throws Exception {
         Job job2 = job;
         job2.setJobName("System admin");
         doReturn(Optional.of(job)).when(jobService).find(Long.valueOf(1));
         doReturn(job2).when(jobService).update(job);
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(put("/api/jobs/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.IF_MATCH, 2)
                 .content(asJsonString(job2)))
 
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.jobId", is(1)))
                 .andExpect(jsonPath("$.jobName", is("System admin")));
     }
 
     @Test
+    @DisplayName("Delete a job")
     void deleteJob() throws Exception {
         doReturn(Optional.of(job)).when(jobService).find(Long.valueOf(1));
         doReturn(true).when(jobService).delete(job);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/jobs/{id}", 1))
 
                 .andExpect(status().isOk());

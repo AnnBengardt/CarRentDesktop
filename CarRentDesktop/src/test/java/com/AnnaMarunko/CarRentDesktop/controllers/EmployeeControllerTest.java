@@ -1,11 +1,11 @@
 package com.AnnaMarunko.CarRentDesktop.controllers;
 
 import com.AnnaMarunko.CarRentDesktop.entities.Employee;
-import com.AnnaMarunko.CarRentDesktop.entities.Office;
 import com.AnnaMarunko.CarRentDesktop.services.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -57,30 +57,32 @@ class EmployeeControllerTest {
     }
 
     @Test
+    @DisplayName("Create an employee")
     void create() throws Exception {
         doReturn(employee).when(employeeService).create(any());
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(post("/api/employees")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(employee)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all employees")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(employee, employee1)).when(employeeService).findAll();
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/employees"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].employeeId", is(1)))
                 .andExpect(jsonPath("$[0].firstName", is("Ivan")))
@@ -95,16 +97,17 @@ class EmployeeControllerTest {
     }
 
     @Test
+    @DisplayName("Find an employee by ID")
     void find() throws Exception {
         doReturn(Optional.of(employee)).when(employeeService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/employees/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.employeeId", is(1)))
                 .andExpect(jsonPath("$.firstName", is("Ivan")))
                 .andExpect(jsonPath("$.lastName", is("Ivanov")))
@@ -113,6 +116,7 @@ class EmployeeControllerTest {
     }
 
     @Test
+    @DisplayName("Update an employee")
     void updateEmployee() throws Exception {
         Employee employee2 = employee;
         employee2.setFirstName("Andrew");
@@ -138,21 +142,25 @@ class EmployeeControllerTest {
     }
 
     @Test
+    @DisplayName("Delete an employee")
     void deleteEmployee() throws Exception {
         doReturn(Optional.of(employee)).when(employeeService).find(Long.valueOf(1));
         doReturn(true).when(employeeService).delete(employee);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/employees/{id}", 1))
                 .andExpect(status().isOk());
     }
 
 
     @Test
+    @DisplayName("Find an employee by ID")
     void findByEmail() throws Exception {
         doReturn(Optional.of(employee1)).when(employeeService).findByEmail("AP@mail.ru");
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/employees/email/AP@mail.ru"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 

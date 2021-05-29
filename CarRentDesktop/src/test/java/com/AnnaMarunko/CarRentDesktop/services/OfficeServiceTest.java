@@ -1,11 +1,10 @@
 package com.AnnaMarunko.CarRentDesktop.services;
 
-import com.AnnaMarunko.CarRentDesktop.entities.Job;
 import com.AnnaMarunko.CarRentDesktop.entities.Office;
-import com.AnnaMarunko.CarRentDesktop.repos.JobRepo;
 import com.AnnaMarunko.CarRentDesktop.repos.OfficeRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -48,6 +46,7 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Create an office")
     void create() {
         doReturn(office1).when(officeRepo).save(office1);
 
@@ -59,12 +58,13 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Update an office")
     void update() {
         office1.setEmail("newoffice@office.ru");
         doReturn(office1).when(officeRepo).save(office1);
 
         // Execute the service call
-        Office returnedValue = officeService.create(office1);
+        Office returnedValue = officeService.update(office1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved office should not be null");
@@ -72,6 +72,7 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Delete an office")
     void delete() {
         doNothing().when(officeRepo).delete(office1);
 
@@ -85,6 +86,7 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Find all offices")
     void findAll() {
         doReturn(Arrays.asList(office, office1)).when(officeRepo).findAll();
 
@@ -96,6 +98,7 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Find an office by ID")
     void find() {
 
         doReturn(Optional.of(office)).when(officeRepo).findById(Long.valueOf(1));
@@ -110,6 +113,7 @@ class OfficeServiceTest {
     }
 
     @Test
+    @DisplayName("Find an office by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(officeRepo).findById(Long.valueOf(5));
 

@@ -6,6 +6,7 @@ import com.AnnaMarunko.CarRentDesktop.services.CarService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,13 +15,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
+
 
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -65,30 +65,32 @@ class CarControllerTest {
     }
 
     @Test
+    @DisplayName("Create a car")
     void create() throws Exception {
         doReturn(car).when(carService).create(any());
 
-        // Execute the POST request
+        // POST request
         mockMvc.perform(post("/api/cars")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(car)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all cars")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(car, car1)).when(carService).findAll();
 
-        // Execute the GET request
+        // GET request
         mockMvc.perform(get("/api/cars"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields validation
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].carId", is(1)))
                 .andExpect(jsonPath("$[0].status", is(true)))
@@ -111,16 +113,17 @@ class CarControllerTest {
     }
 
     @Test
+    @DisplayName("Find a car by ID")
     void find() throws Exception {
         doReturn(Optional.of(car)).when(carService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // GET request
         mockMvc.perform(get("/api/cars/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.carId", is(1)))
                 .andExpect(jsonPath("$.status", is(true)))
                 .andExpect(jsonPath("$.startingPrice", is(3000.00)))
@@ -133,6 +136,7 @@ class CarControllerTest {
     }
 
     @Test
+    @DisplayName("Update a car")
     void updateCar() throws Exception {
         Car car2 = car;
         car2.setBrand("Audi");
@@ -145,11 +149,11 @@ class CarControllerTest {
                 .header(HttpHeaders.IF_MATCH, 2)
                 .content(asJsonString(car2)))
 
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.carId", is(1)))
                 .andExpect(jsonPath("$.status", is(true)))
                 .andExpect(jsonPath("$.startingPrice", is(3000.00)))
@@ -162,21 +166,25 @@ class CarControllerTest {
     }
 
     @Test
+    @DisplayName("Delete a car")
     void deleteCar() throws Exception {
         doReturn(Optional.of(car)).when(carService).find(Long.valueOf(1));
         doReturn(true).when(carService).delete(car);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/cars/{id}", 1))
                 .andExpect(status().isOk());
     }
 
 
     @Test
+    @DisplayName("Find a car by office ID")
     void findByOfficeId() throws Exception {
         doReturn(Lists.newArrayList(car, car1)).when(carService).findByOfficeId(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/cars/findbyoffice/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
@@ -205,13 +213,12 @@ class CarControllerTest {
 
     static String asJsonString(final Object obj) {
         try {
+            // JSON obj to String
             return new ObjectMapper().writeValueAsString(obj);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
-    
     
 
 }

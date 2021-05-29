@@ -4,6 +4,7 @@ import com.AnnaMarunko.CarRentDesktop.entities.Rate;
 import com.AnnaMarunko.CarRentDesktop.repos.RateRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +43,7 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Create a rate")
     void create() {
         doReturn(rate1).when(rateRepo).save(rate1);
 
@@ -53,12 +55,13 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Update a rate")
     void update() {
         rate1.setPrice(10000.00);
         doReturn(rate1).when(rateRepo).save(rate1);
 
         // Execute the service call
-        Rate returnedValue = rateService.create(rate1);
+        Rate returnedValue = rateService.update(rate1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved rate should not be null");
@@ -66,6 +69,7 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Delete a rate")
     void delete() {
         doNothing().when(rateRepo).delete(rate1);
 
@@ -79,6 +83,7 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Find all rates")
     void findAll() {
         doReturn(Arrays.asList(rate, rate1)).when(rateRepo).findAll();
 
@@ -90,6 +95,7 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Find a rate by ID")
     void find() {
 
         doReturn(Optional.of(rate)).when(rateRepo).findById(Long.valueOf(1));
@@ -104,6 +110,7 @@ class RateServiceTest {
     }
 
     @Test
+    @DisplayName("Find a rate by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(rateRepo).findById(Long.valueOf(5));
 

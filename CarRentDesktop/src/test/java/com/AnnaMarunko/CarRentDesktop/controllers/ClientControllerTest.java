@@ -7,6 +7,7 @@ import com.AnnaMarunko.CarRentDesktop.services.OfficeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -62,30 +63,32 @@ class ClientControllerTest {
     }
 
     @Test
+    @DisplayName("Create a client")
     void create() throws Exception {
         doReturn(client).when(clientService).create(any());
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(post("/api/clients")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(client)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all clients")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(client, client1)).when(clientService).findAll();
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/clients"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].clientId", is(1)))
                 .andExpect(jsonPath("$[0].isBlackListed", is(false)))
@@ -104,16 +107,17 @@ class ClientControllerTest {
     }
 
     @Test
+    @DisplayName("Find a client by ID")
     void find() throws Exception {
         doReturn(Optional.of(client)).when(clientService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/clients/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.clientId", is(1)))
                 .andExpect(jsonPath("$.isBlackListed", is(false)))
                 .andExpect(jsonPath("$.phone", is("+7(903)555-55-55")))
@@ -124,23 +128,24 @@ class ClientControllerTest {
     }
 
     @Test
+    @DisplayName("Update a client")
     void updateClient() throws Exception {
         Client client2 = client;
         client2.setFirstName("Eugene");
         doReturn(Optional.of(client)).when(clientService).find(Long.valueOf(1));
         doReturn(client2).when(clientService).update(client);
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(put("/api/clients/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.IF_MATCH, 2)
                 .content(asJsonString(client2)))
 
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.clientId", is(1)))
                 .andExpect(jsonPath("$.isBlackListed", is(false)))
                 .andExpect(jsonPath("$.phone", is("+7(903)555-55-55")))
@@ -151,9 +156,12 @@ class ClientControllerTest {
     }
 
     @Test
+    @DisplayName("Delete a client")
     void deleteClient() throws Exception {
         doReturn(Optional.of(client)).when(clientService).find(Long.valueOf(1));
         doReturn(true).when(clientService).delete(client);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/clients/{id}", 1))
                 .andExpect(status().isOk());
     }

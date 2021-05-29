@@ -35,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -82,6 +82,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.AnnaMarunko.CarRentDesktop.repos" />
       <recent name="com.AnnaMarunko.CarRentDesktop.controllers" />
       <recent name="com.AnnaMarunko.CarRentDesktop.services" />
     </key>
@@ -89,90 +90,88 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RentControllerTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RentServiceTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CarControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CarRentDesktop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers.CarControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsuranceServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CarRentDesktop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.controllers.*" />
+          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers.ClientControllerTest" />
+      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.services" />
+      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.services.InsuranceServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JobServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CarRentDesktop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.controllers.*" />
+          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers.EmployeeControllerTest" />
+      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.services" />
+      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.services.JobServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InsuranceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OfficeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CarRentDesktop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.controllers.*" />
+          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers.InsuranceControllerTest" />
+      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.services" />
+      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.services.OfficeServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RentControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RateServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CarRentDesktop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.controllers.*" />
+          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.controllers.RentControllerTest" />
+      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.services" />
+      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.services.RateServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarRentDesktop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.AnnaMarunko.CarRentDesktop.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.AnnaMarunko.CarRentDesktop.services" />
+      <option name="MAIN_CLASS_NAME" value="com.AnnaMarunko.CarRentDesktop.services.RentServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -187,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RentControllerTest" />
-        <item itemvalue="JUnit.InsuranceControllerTest" />
-        <item itemvalue="JUnit.EmployeeControllerTest" />
-        <item itemvalue="JUnit.CarControllerTest" />
-        <item itemvalue="JUnit.ClientControllerTest" />
+        <item itemvalue="JUnit.RentServiceTest" />
+        <item itemvalue="JUnit.RateServiceTest" />
+        <item itemvalue="JUnit.OfficeServiceTest" />
+        <item itemvalue="JUnit.JobServiceTest" />
+        <item itemvalue="JUnit.InsuranceServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +218,9 @@
       <workItem from="1621173899429" duration="4000" />
       <workItem from="1621175272921" duration="732000" />
       <workItem from="1621186714921" duration="46000" />
-      <workItem from="1622189633822" duration="38002000" />
+      <workItem from="1622189633822" duration="40184000" />
+      <workItem from="1622243342789" duration="41000" />
+      <workItem from="1622290622174" duration="13179000" />
     </task>
     <servers />
   </component>
@@ -247,6 +248,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824@0.0.1536.824" timestamp="1622233547606" />
+    <state x="529" y="281" width="480" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1622302476969">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="529" y="281" width="480" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1622302476969" />
     <state x="763" y="176" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1620556899958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -255,22 +260,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1622195092808" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1622234975311">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1622303904183">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622234975311" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1622234975311">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622303904183" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1622303904183">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622234975311" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1622234975310">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622303904183" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1622303904183">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622234975310" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1622234975311">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622303904183" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1622303904183">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622234975311" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622303904183" />
     <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1622196026042">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -311,10 +316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621186750632" />
-    <state x="500" y="174" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1622233595410">
+    <state x="500" y="174" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1622242416008">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="500" y="174" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1622233595410" />
+    <state x="500" y="174" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1622242416008" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1622209471665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

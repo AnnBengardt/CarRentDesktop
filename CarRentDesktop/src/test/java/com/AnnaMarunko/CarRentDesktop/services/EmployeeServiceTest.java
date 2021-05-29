@@ -4,6 +4,7 @@ import com.AnnaMarunko.CarRentDesktop.entities.Employee;
 import com.AnnaMarunko.CarRentDesktop.repos.EmployeeRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -51,6 +51,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Create an employee")
     void create() {
         doReturn(employee1).when(employeeRepo).save(employee1);
 
@@ -62,6 +63,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Update an employee")
     void update() {
         employee1.setEmail("newemail@yandex.ru");
         doReturn(employee1).when(employeeRepo).save(employee1);
@@ -75,6 +77,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Delete an employee")
     void delete() {
         doNothing().when(employeeRepo).delete(employee1);
 
@@ -88,6 +91,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Find all employees")
     void findAll() {
         doReturn(Arrays.asList(employee, employee1)).when(employeeRepo).findAll();
 
@@ -99,6 +103,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Find an employee by ID")
     void find() {
 
         doReturn(Optional.of(employee)).when(employeeRepo).findById(Long.valueOf(1));
@@ -113,6 +118,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Find an employee by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(employeeRepo).findById(Long.valueOf(22));
 
@@ -124,6 +130,7 @@ class EmployeeServiceTest {
     }
 
     @Test
+    @DisplayName("Find an employee by email")
     void findByEmail() {
 
         doReturn(Optional.of(employee)).when(employeeRepo).findByEmail("II@mail.ru");

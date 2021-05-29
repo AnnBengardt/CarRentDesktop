@@ -5,6 +5,7 @@ import com.AnnaMarunko.CarRentDesktop.entities.Office;
 import com.AnnaMarunko.CarRentDesktop.repos.CarRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -55,6 +55,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Create a car")
     void create() {
         doReturn(car1).when(carRepo).save(car1);
 
@@ -66,12 +67,13 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Update a car")
     void update() {
         car1.setBrand("Volkswagen");
         doReturn(car1).when(carRepo).save(car1);
 
         // Execute the service call
-        Car returnedValue = carService.create(car1);
+        Car returnedValue = carService.update(car1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved car should not be null");
@@ -79,6 +81,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Delete a car")
     void delete() {
         doNothing().when(carRepo).delete(car1);
 
@@ -92,6 +95,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Find all cars")
     void findAll() {
         doReturn(Arrays.asList(car, car1)).when(carRepo).findAll();
 
@@ -103,6 +107,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Find a car by ID")
     void find() {
 
         doReturn(Optional.of(car)).when(carRepo).findById(Long.valueOf(1));
@@ -117,6 +122,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Find a car by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(carRepo).findById(Long.valueOf(22));
 
@@ -128,6 +134,7 @@ class CarServiceTest {
     }
 
     @Test
+    @DisplayName("Find cars by office id")
     void findByOfficeId() {
 
         doReturn(Arrays.asList(car, car1)).when(carRepo).findByOffice_OfficeId(Long.valueOf(1));

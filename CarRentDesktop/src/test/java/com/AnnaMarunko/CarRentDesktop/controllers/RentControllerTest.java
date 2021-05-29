@@ -1,11 +1,11 @@
 package com.AnnaMarunko.CarRentDesktop.controllers;
 
 import com.AnnaMarunko.CarRentDesktop.entities.*;
-import com.AnnaMarunko.CarRentDesktop.services.InsuranceService;
 import com.AnnaMarunko.CarRentDesktop.services.RentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,7 +19,6 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -78,30 +77,32 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Create a rent")
     void create() throws Exception {
         doReturn(rent).when(rentService).create(any());
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(post("/api/rents")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(rent)))
 
-                // Validate the response code and content type
+                // the response code
                 .andExpect(status().is(201));
 
     }
 
     @Test
+    @DisplayName("Find all rents")
     void findAll() throws Exception {
         doReturn(Lists.newArrayList(rent, rent1)).when(rentService).findAll();
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/rents"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].rentId", is(1)))
                 .andExpect(jsonPath("$[0].finalPrice", is(500.00)))
@@ -142,16 +143,17 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Find a rent by ID")
     void find() throws Exception {
         doReturn(Optional.of(rent)).when(rentService).find(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/rents/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.rentId", is(1)))
                 .andExpect(jsonPath("$.finalPrice", is(500.00)))
                 .andExpect(jsonPath("$.car.carId", is(1)))
@@ -173,23 +175,24 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Update a rent")
     void updateRent() throws Exception {
         Rent rent2 = rent;
         rent2.setFinalPrice(3500.00);
         doReturn(Optional.of(rent)).when(rentService).find(Long.valueOf(1));
         doReturn(rent2).when(rentService).update(rent);
 
-        // Execute the POST request
+        // the POST request
         mockMvc.perform(put("/api/rents/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.IF_MATCH, 2)
                 .content(asJsonString(rent2)))
 
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
-                // Validate the returned fields
+                // the returned fields
                 .andExpect(jsonPath("$.rentId", is(1)))
                 .andExpect(jsonPath("$.finalPrice", is(3500.00)))
                 .andExpect(jsonPath("$.car.carId", is(1)))
@@ -212,9 +215,12 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Delete a rent")
     void deleteRent() throws Exception {
         doReturn(Optional.of(rent)).when(rentService).find(Long.valueOf(1));
         doReturn(true).when(rentService).delete(rent);
+
+        // the DELETE request
         mockMvc.perform(delete("/api/rents/{id}", 1))
                 .andExpect(status().isOk());
     }
@@ -222,15 +228,17 @@ class RentControllerTest {
 
 
     @Test
+    @DisplayName("Find rents by client ID")
     void findByClientId() throws Exception {
         doReturn(Lists.newArrayList(rent, rent1)).when(rentService).findByClientId(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/rents/findbyclient/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
+                // the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].rentId", is(1)))
                 .andExpect(jsonPath("$[0].finalPrice", is(500.00)))
@@ -271,12 +279,13 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Find rents by Car Office ID")
     void findByOfficeId() throws Exception {
         doReturn(Lists.newArrayList(rent, rent1)).when(rentService).findByOfficeId(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/rents/findbyoffice//1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
@@ -320,12 +329,13 @@ class RentControllerTest {
     }
 
     @Test
+    @DisplayName("Find rents by Car")
     void findByCar() throws Exception {
         doReturn(Lists.newArrayList(rent, rent1)).when(rentService).findByCarId(Long.valueOf(1));
 
-        // Execute the GET request
+        // the GET request
         mockMvc.perform(get("/api/rents/findbycar/1"))
-                // Validate the response code and content type
+                // the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 

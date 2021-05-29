@@ -1,10 +1,10 @@
 package com.AnnaMarunko.CarRentDesktop.services;
 
 import com.AnnaMarunko.CarRentDesktop.entities.*;
-import com.AnnaMarunko.CarRentDesktop.repos.RateRepo;
 import com.AnnaMarunko.CarRentDesktop.repos.RentRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -75,6 +74,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Create a rent")
     void create() {
         doReturn(rent1).when(rentRepo).save(rent1);
 
@@ -86,12 +86,13 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Update a rent")
     void update() {
         rent1.setFinalPrice(10000.00);
         doReturn(rent1).when(rentRepo).save(rent1);
 
         // Execute the service call
-        Rent returnedValue = rentService.create(rent1);
+        Rent returnedValue = rentService.update(rent1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved rent should not be null");
@@ -99,6 +100,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Delete a rent")
     void delete() {
         doNothing().when(rentRepo).delete(rent1);
 
@@ -112,6 +114,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find all rents")
     void findAll() {
         doReturn(Arrays.asList(rent, rent1)).when(rentRepo).findAll();
 
@@ -123,6 +126,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find a rent by ID")
     void find() {
 
         doReturn(Optional.of(rent)).when(rentRepo).findById(Long.valueOf(1));
@@ -137,6 +141,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find a rent by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(rentRepo).findById(Long.valueOf(5));
 
@@ -148,6 +153,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find rents by Client ID")
     void findByClientId() {
         doReturn(Arrays.asList(rent, rent1)).when(rentRepo).findByClient_ClientId(Long.valueOf(1));
 
@@ -159,6 +165,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find rents by Office ID")
     void findByOfficeId() {
         doReturn(Arrays.asList(rent, rent1)).when(rentRepo).findByCar_Office_OfficeId(Long.valueOf(1));
 
@@ -170,6 +177,7 @@ class RentServiceTest {
     }
 
     @Test
+    @DisplayName("Find rents by Car ID")
     void findByCarId() {
         doReturn(Arrays.asList(rent, rent1)).when(rentRepo).findByCar_CarId(Long.valueOf(2));
 

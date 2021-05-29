@@ -4,6 +4,7 @@ import com.AnnaMarunko.CarRentDesktop.entities.Job;
 import com.AnnaMarunko.CarRentDesktop.repos.JobRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
@@ -40,6 +40,7 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Create a job")
     void create() {
         doReturn(job1).when(jobRepo).save(job1);
 
@@ -51,12 +52,13 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Update a job")
     void update() {
         job1.setJobName("Sales manager");
         doReturn(job1).when(jobRepo).save(job1);
 
         // Execute the service call
-        Job returnedValue = jobService.create(job1);
+        Job returnedValue = jobService.update(job1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved job should not be null");
@@ -64,6 +66,7 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Delete a job")
     void delete() {
         doNothing().when(jobRepo).delete(job1);
 
@@ -77,6 +80,7 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Find all jobs")
     void findAll() {
         doReturn(Arrays.asList(job, job1)).when(jobRepo).findAll();
 
@@ -88,6 +92,7 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Find a job by ID")
     void find() {
 
         doReturn(Optional.of(job)).when(jobRepo).findById(Long.valueOf(1));
@@ -102,6 +107,7 @@ class JobServiceTest {
     }
 
     @Test
+    @DisplayName("Find a job by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(jobRepo).findById(Long.valueOf(5));
 

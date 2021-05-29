@@ -1,11 +1,10 @@
 package com.AnnaMarunko.CarRentDesktop.services;
 
 import com.AnnaMarunko.CarRentDesktop.entities.Client;
-import com.AnnaMarunko.CarRentDesktop.entities.Employee;
 import com.AnnaMarunko.CarRentDesktop.repos.ClientRepo;
-import com.AnnaMarunko.CarRentDesktop.repos.EmployeeRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,6 +50,7 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Create a client")
     void create() {
         doReturn(client1).when(clientRepo).save(client1);
 
@@ -62,12 +62,13 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Update a client")
     void update() {
         client1.setIsBlackListed(true);
         doReturn(client1).when(clientRepo).save(client1);
 
         // Execute the service call
-        Client returnedValue = clientService.create(client1);
+        Client returnedValue = clientService.update(client1);
 
         // Assert the response
         Assertions.assertNotNull(returnedValue, "The saved client should not be null");
@@ -75,6 +76,7 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Delete a client")
     void delete() {
         doNothing().when(clientRepo).delete(client1);
 
@@ -88,6 +90,7 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Find all clients")
     void findAll() {
         doReturn(Arrays.asList(client, client1)).when(clientRepo).findAll();
 
@@ -99,6 +102,7 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Find a client by ID")
     void find() {
 
         doReturn(Optional.of(client)).when(clientRepo).findById(Long.valueOf(1));
@@ -113,6 +117,7 @@ class ClientServiceTest {
     }
 
     @Test
+    @DisplayName("Find a client by ID (fail)")
     void findNotFound() {
         doReturn(Optional.empty()).when(clientRepo).findById(Long.valueOf(5));
 
